@@ -32,7 +32,7 @@ const CommitLogs: React.FC<CommitLogsProps> = ({ commits }) => {
                   {commit.date}
                 </time>
                 <p className="text-base text-gray-700 dark:text-gray-300">
-                  {commit.url}
+                  {commit.summary}
                 </p>
               </div>
             </div>

@@ -39,6 +39,7 @@ model Project {
   updatedAt DateTime @updatedAt
 
   projectCollaborators ProjectCollaborator[]
+  commitSummaries      CommitSummary[]
 
   @@index([ownerId], name: "project_ownerId_index")
   @@index([name], name: "project_name_index")
@@ -58,4 +59,16 @@ model ProjectCollaborator {
   @@index([projectId], name: "project_collaborator_projectId_index")
   @@index([collaboratorId], name: "project_collaborator_collaboratorId_index")
   @@map("project_collaborators")
+}
+
+model CommitSummary {
+  id String @unique @default(cuid())
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id])
+
+  summary String
+
+  @@index([projectId], name: "commit_summary_projectId_index")
+  @@map("commit_summaries")
 }

@@ -2,55 +2,70 @@
 
 import CommitLogs from "@/components/projects/commit-logs";
 import useProject from "@/hooks/use-project";
+import { fetchUserDetails, getSummarizedCommits } from "@/lib/github";
 import { useGetCommitsByUrl } from "@/lib/query/github.query";
-import { CommitType } from "@/lib/types/github.types";
-import { useParams } from "next/navigation";
+import { CommitType, RepoOwnerType } from "@/lib/types/github.types";
 import React, { useEffect, useState } from "react";
-import { FaCode, FaRocket, FaTrophy } from "react-icons/fa";
-
-const events = [
-  {
-    date: "January 1, 2025",
-    title: "Started DSA Journey",
-    description: "Began mastering DSA to prepare for MNC interviews.",
-    icon: <FaCode className="text-white" />,
-  },
-  {
-    date: "November 21, 2024",
-    title: "Won Hackathon",
-    description:
-      "Built a blockchain-based user-friendly app and won 1st place in a hackathon.",
-    icon: <FaTrophy className="text-white" />,
-  },
-  {
-    date: "November 7, 2024",
-    title: "Explored Next.js",
-    description:
-      "Dived into Next.js and built full-stack apps with advanced features.",
-    icon: <FaRocket className="text-white" />,
-  },
-];
 
 const page = () => {
-  const { projectId } = useParams();
-  const { projects } = useProject();
+  const { selectedProject: project } = useProject();
 
   const [commits, setCommits] = useState<CommitType[]>([]);
+  const [projectOwner, setProjectOwner] = useState<RepoOwnerType | null>();
 
   const { mutateAsync: getCommitsByUrl, isPending } = useGetCommitsByUrl();
 
-  const project = projects?.find((project) => project.id === projectId);
-
   useEffect(() => {
     if (!project) return;
-    getCommitsByUrl(project.url).then((data) => setCommits(data));
+
+    Promise.all([getCommitsByUrl(project.url), fetchUserDetails(project.url)])
+      .then(async ([commitsData, userDetails]) => {
+        const summarizedCommits = await getSummarizedCommits(commitsData);
+        setCommits(summarizedCommits);
+        setProjectOwner(userDetails);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [project]);
 
   return (
     <div>
-      <h1>Project Page</h1>
-      <p>Project ID: {projectId}</p>
-      <p>Projects: {projects[0].url}</p>
+      {projectOwner && (
+        <div className="w-full border border-neutral-200 p-4 flex justify-between items-center bg-white shadow-sm rounded-md">
+          <div className="flex items-center gap-4">
+            <img
+              className="h-12 w-12 rounded-full border border-neutral-300"
+              src={projectOwner.avatar}
+              alt={projectOwner.name}
+            />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold text-neutral-800">
+                {projectOwner.name}
+              </span>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm text-neutral-600">
+                  {projectOwner.bio}
+                </span>
+                <span className="text-sm text-neutral-600">
+                  {projectOwner.location}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-end text-right">
+            <span className="text-sm text-neutral-600">
+              Followers: {projectOwner.followers}
+            </span>
+            <span className="text-sm text-neutral-600">
+              Following: {projectOwner.following}
+            </span>
+            <span className="text-sm text-neutral-600">
+              Public Repos: {projectOwner.publicRepos}
+            </span>
+          </div>
+        </div>
+      )}
 
       <CommitLogs commits={commits} />
     </div>
