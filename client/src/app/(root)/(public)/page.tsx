@@ -7,7 +7,8 @@ import React from "react";
 const page = () => {
   // const { data } = useSession();
   return (
-    <section className="flex flex-col justify-start items-center">
+    <section className="flex flex-col justify-start items-center ">
+      <div className="absolute w-full h-full gradient">HELLO</div>
       <HeroSection />
       <DisplaySection />
     </section>

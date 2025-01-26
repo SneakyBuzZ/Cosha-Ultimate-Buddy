@@ -4,6 +4,7 @@ import AuthProvider from "@/components/shared/AuthProvider";
 import { spaceGrotesk } from "@/lib/fonts";
 import { QueryProvider } from "@/lib/query/query-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/shared/ThemProvider";
 
 export const metadata: Metadata = {
   title: "Cosha",
@@ -24,10 +25,17 @@ export default function AppLayout({
         style={{ letterSpacing: "-0.05" }}
         className={`antialiased ${spaceGrotesk.className}`}
       >
-        <AuthProvider>
-          <QueryProvider>{children}</QueryProvider>
-        </AuthProvider>
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </AuthProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

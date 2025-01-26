@@ -6,27 +6,37 @@ import AuthModal from "@/components/shared/AuthModal";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { FaGithub } from "react-icons/fa";
+import { ToggleTheme } from "@/components/shared/ToggleTheme";
 
 const Navbar = ({ session }: NavbarPropsType) => {
   const handleLogout = async () => {
     await signOut();
   };
   return (
-    <nav className="z-50 w-full flex justify-between items-center px-3 md:px-8 py-3 bg-neutral-50 border-b border-b-neutral-200">
+    <nav className="z-50 w-full h-[20%] flex justify-between items-center px-3 md:px-8 py-3 border-b border-b-neutral-200 dark:border-b-neutral-700 bg-neutral-100 dark:bg-neutral-950">
       <Logo logoClass="w-6 sm:w-8" textClassName="text-xl sm:text-2xl" />
       {session ? (
         <>
           <div className="flex items-center justify-center gap-4">
+            <ToggleTheme />
+
             <UserAvatar
               image={session.user?.image}
               className="size-8 sm:size-9 md:size-10"
             />
-            <Button onClick={handleLogout}>Logout</Button>
+            <Button
+              className="bg-neutral-900 border border-neutral-900 text-neutral-500"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
           </div>
         </>
       ) : (
         <>
           <div className="flex justify-center items-center gap-1">
+            <ToggleTheme />
+
             <Link href="" className="text-xs md:text-sm mr-3">
               <FaGithub className="h-5 w-5" />
             </Link>

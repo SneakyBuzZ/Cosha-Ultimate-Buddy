@@ -67,11 +67,11 @@ export const PROJECT_SIDEBAR_ELEMENTS = [
     items: [
       {
         title: "Ask Your Repo",
-        url: "/ask",
+        url: "/projects/cm674k06i0002xz7weefgeku4/ask-repo",
       },
       {
         title: "Code Editor",
-        url: "/editor",
+        url: "/projects/cm674k06i0002xz7weefgeku4/editor",
       },
     ],
   },

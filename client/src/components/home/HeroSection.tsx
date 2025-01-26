@@ -14,10 +14,16 @@ const HeroSection = () => {
           splineSans.className
         )}
       >
-        <h2 className={cn("text-5xl font-bold text-neutral-700")}>
+        <h2
+          className={cn(
+            "text-5xl font-bold text-neutral-700 dark:text-neutral-400"
+          )}
+        >
           Revolutionize Your Git Workflow with AI.
         </h2>
-        <h4 className={cn("text-4xl font-medium text-orchid/70")}>
+        <h4
+          className={cn("text-4xl font-medium text-orchid/70 dark:text-orchid")}
+        >
           Ask , Summarize , Collaborate , and Commit
         </h4>
       </div>

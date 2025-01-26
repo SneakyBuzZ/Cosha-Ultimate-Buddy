@@ -25,14 +25,14 @@ const CommitLogs: React.FC<CommitLogsProps> = ({ commits }) => {
 
               {/* Content */}
               <div className="flex-1 ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-neutral-900">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-400 group-hover:text-neutral-900">
                   {commit.message}
                 </h3>
-                <time className="block mb-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                <time className="block mb-2 text-sm font-normal text-gray-500 dark:text-gray-500">
                   {commit.date}
                 </time>
-                <p className="text-base text-gray-700 dark:text-gray-300">
-                  {commit.url}
+                <p className="text-base text-gray-700 dark:text-neutral-600">
+                  {commit.summary}
                 </p>
               </div>
             </div>

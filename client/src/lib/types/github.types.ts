@@ -8,4 +8,15 @@ export type CommitType = {
   };
   url: string;
   date: string;
+  summary?: string;
+};
+
+export type RepoOwnerType = {
+  avatar: string;
+  name: string;
+  bio: string;
+  followers: number;
+  following: number;
+  location: string;
+  publicRepos: number;
 };

@@ -23,7 +23,7 @@ const Logo = ({
         <h4
           style={{ letterSpacing: "-0.08em" }}
           className={cn(
-            "text-base md:text-xl lg:text-2xl text-neutral-700 font-medium",
+            "text-base md:text-xl lg:text-2xl text-neutral-700 dark:text-neutral-400",
             textClassName,
             spaceGrotesk.className
           )}

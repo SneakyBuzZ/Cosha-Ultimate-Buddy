@@ -57,7 +57,7 @@ const ProjectTable = () => {
             <>
               <Table className="border border-neutral-300 w-[95%] mt-5 ">
                 <TableCaption>A list of your recent projects.</TableCaption>
-                <TableHeader className="bg-neutral-100/60">
+                <TableHeader className="">
                   <TableRow className="h-[3rem]">
                     <TableHead className="w-16 p-3">No.</TableHead>
                     <TableHead className=" w-40 border-x border-x-neutral-300 p-3">
