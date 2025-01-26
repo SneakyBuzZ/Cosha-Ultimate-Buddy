@@ -1,18 +1,23 @@
-# Base image for Node.js
-FROM node:18-alpine
+# Use an official Node.js image as the base image
+FROM node:18
 
-# Set working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package.json package-lock.json ./
+# Copy only package.json and package-lock.json to leverage Docker caching
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the entire project (excluding files in .dockerignore)
+# Copy the rest of the application code into the container
 COPY . .
 
-# Build for production
-RUN npm run build
+# Run Prisma generate to prepare the client
+RUN npx prisma generate
 
-# Default command for production
-CMD ["npm", "run", "start"]
+# Expose the port your server runs on
+EXPOSE 8000
+
+# Define the default command to run your application
+CMD [\"sh\", \"-c\", \"npx prisma migrate dev --name 'initial_migration' && npm run dev\"]

@@ -1,0 +1,23 @@
+# Dockerfile for websocket
+# websocket/Dockerfile
+
+# Use the official Node.js 18 image
+FROM node:18
+
+# Create a directory for the app
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the app directory
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Copy the rest of the app to the app directory
+COPY . .
+
+# Expose port 8080
+EXPOSE 8080
+
+# Run the app
+CMD ["npm", "run", "start"]

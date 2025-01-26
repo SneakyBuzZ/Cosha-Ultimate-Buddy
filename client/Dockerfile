@@ -5,14 +5,15 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install
 
 # Copy the entire project (excluding files in .dockerignore)
 COPY . .
 
-# Build for production
-RUN npm run build
+# Expose the port your application runs on
+EXPOSE 3000
+
 
 # Default command for production
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
