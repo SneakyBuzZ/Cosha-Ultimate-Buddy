@@ -1,5 +1,13 @@
 "use client";
 
+import React from "react";
+import { Editor, Theme } from "@monaco-editor/react";
+import { FileStructure } from "@/components/editor/FileStructure";
+import { Button } from "@/components/ui/button";
+
+const code = `
+"use client";
+
 import CommitLogs from "@/components/projects/commit-logs";
 import useProject from "@/hooks/use-project";
 import { fetchUserDetails, getSummarizedCommits } from "@/lib/github";
@@ -32,7 +40,7 @@ const page = () => {
   return (
     <div>
       {projectOwner && (
-        <div className="w-full h-full border border-neutral-200 dark:border-none p-4 flex justify-between items-center shadow-sm rounded-md ">
+        <div className="w-full h-full border border-neutral-200 p-4 flex justify-between items-center shadow-sm rounded-md ">
           <div className="flex items-center gap-4">
             <img
               className="h-12 w-12 rounded-full border border-neutral-300"
@@ -40,7 +48,7 @@ const page = () => {
               alt={projectOwner.name}
             />
             <div className="flex flex-col">
-              <span className="text-lg font-semibold text-neutral-400">
+              <span className="text-lg font-semibold text-neutral-800">
                 {projectOwner.name}
               </span>
               <div className="flex flex-col gap-1">
@@ -68,6 +76,41 @@ const page = () => {
       )}
 
       <CommitLogs commits={commits} />
+    </div>
+  );
+};
+
+export default page;
+
+`;
+
+const page = () => {
+  return (
+    <div className="h-screen w-full flex justify-center items-center">
+      <Editor
+        height="90vh"
+        defaultLanguage="javascript"
+        defaultValue={code}
+        theme="vs-dark"
+        options={{
+          fontSize: 14,
+          fontFamily: "Fira Code, monospace",
+        }}
+      />
+      <div className="w-[30%] h-full flex flex-col justify-start items-center gap-2">
+        <FileStructure />
+        <div className="flex flex-col justify-start items-start p-4 gap-2">
+          <div className="flex flex-col justify-start items-start gap-1 w-full">
+            <h3 className="text-neutral-400">Push Code to Remote</h3>
+            <p className="text-neutral-500 dark:text-neutral-600 text-xs">
+              You can push the code to remote by running the following command
+            </p>
+          </div>
+          <Button className="bg-orchid border-r-orchid-dark text-white w-full">
+            Push Origin
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

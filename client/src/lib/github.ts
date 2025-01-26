@@ -24,7 +24,7 @@ export const getCommitsByUrl = async (
     const response = await octokit.rest.repos.listCommits({
       owner,
       repo,
-      per_page: 4,
+      per_page: 3,
     });
 
     const commits = await Promise.all(

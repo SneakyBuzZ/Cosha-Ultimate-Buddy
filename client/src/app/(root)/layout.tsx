@@ -3,7 +3,7 @@
 import Navbar from "@/components/shared/Navbar";
 import { useSession } from "next-auth/react";
 
-export default function RootLayout({
+export default function PublicLayout({
   children,
 }: {
   children: React.ReactNode;

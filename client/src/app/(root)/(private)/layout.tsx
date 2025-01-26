@@ -14,7 +14,7 @@ import {
 import { PROJECT_SIDEBAR_ELEMENTS, SIDEBAR_ELEMENTS } from "@/lib/lists";
 import { useParams, usePathname } from "next/navigation";
 
-export default function RootLayout({
+export default function PrivateLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -34,14 +34,14 @@ export default function RootLayout({
     <>
       <section className="flex justify-start items-center w-full h-[80%]">
         <SidebarProvider>
-          <Sidebar collapsible="icon" className="pt-20 px-4 bg-neutral-50">
+          <Sidebar collapsible="icon" className="pt-20 px-4">
             {ELEMENTS.map((item) => (
               <SidebarGroup key={item.title}>
-                <SidebarGroupLabel className="text-sm p-0">
+                <SidebarGroupLabel className="text-sm p-0 dark:text-neutral-600">
                   {item.title}
                 </SidebarGroupLabel>
-                <SidebarGroupContent className="border-l border-l-neutral-300">
-                  <SidebarMenu className="ml-2">
+                <SidebarGroupContent className="border-l border-l-neutral-300 dark:border-l-neutral-800">
+                  <SidebarMenu className="ml-2 dark:text-neutral-400">
                     {item.items.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton
