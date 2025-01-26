@@ -38,15 +38,16 @@ Built with a mission to make open-source development faster, smarter, and more e
 
 ## Core Problems Cosha Addresses💪🏻
 
-### Inefficient Workflows: 
+### 1. Inefficient Workflows: 
 Cosha combines real-time code editing, repository management, and analytics into a single AI-powered platform to streamline tasks.
 
-Understanding Large Codebases: Cosha’s Ask Your Repo feature provides quick, AI-driven explanations and insights into complex codebases.
+### 2. Understanding Large Codebases: 
+Cosha’s Ask Your Repo feature provides quick, AI-driven explanations and insights into complex codebases.
 
-### Limited Collaboration Insights: 
+### 3. Limited Collaboration Insights: 
 AI-enhanced analytics offers actionable insights into contributions, pull requests, and project health to improve collaboration.
 
-### Repetitive Tasks: 
+### 4. Repetitive Tasks: 
 Automates code suggestions, error detection, and optimizations, saving time for high-value work.
 
 
