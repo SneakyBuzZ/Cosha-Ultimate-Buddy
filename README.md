@@ -2,6 +2,18 @@
 
 #### Revolutionize your development workflow with Cosha, your ultimate AI coding companion. Cosha seamlessly integrates with your environment, offering real-time collaboration, intuitive code comprehension, and insightful analytics.
 
+![image](https://github.com/user-attachments/assets/a870bd04-287c-4bad-af00-eb7276e74b61)
+![image](https://github.com/user-attachments/assets/090f3e95-b63e-48f6-8c82-5f55273cb08b)
+![image](https://github.com/user-attachments/assets/9eb3cd66-dd57-4162-a324-accb5c44e080)
+![image](https://github.com/user-attachments/assets/206d56f7-d667-426f-bb05-62dfb9de6cf0)
+![image](https://github.com/user-attachments/assets/da59e40b-1697-43d1-b7e6-fcf046266bca)
+
+
+
+
+
+
+
 ## Features
 
 ### 1. Real-time AI Code Editor:
