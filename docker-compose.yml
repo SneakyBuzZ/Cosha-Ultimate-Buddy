@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+  server:
+    container_name: cosha-server
+    build:
+      context: ./server
+    ports:
+      - 8000:8000
+    environment:
+      - NODE_ENV=development
+      - PORT=${PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DATABASE_URL=${DATABASE_URL}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - db
+    volumes:
+      - ./server:/app
+    working_dir: /app
+    command: ["sh", "-c", "npx prisma generate && npm run dev"]
+
+  client:
+    container_name: cosha-client
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXT_PUBLIC_CLIENT_URL=${NEXT_PUBLIC_CLIENT_URL}
+      - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    depends_on:
+      - server
+    volumes:
+      - ./client:/app
+    working_dir: /app
+    command: ["npm", "run", "dev"]
