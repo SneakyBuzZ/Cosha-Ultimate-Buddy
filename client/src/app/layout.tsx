@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import AuthProvider from "@/components/shared/AuthProvider";
-import { spaceGrotesk } from "@/lib/fonts";
+import { splineSans } from "@/lib/fonts";
 import { QueryProvider } from "@/lib/query/query-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/shared/ThemProvider";
@@ -23,7 +23,7 @@ export default function AppLayout({
       </head>
       <body
         style={{ letterSpacing: "-0.05" }}
-        className={`antialiased ${spaceGrotesk.className}`}
+        className={`antialiased ${splineSans.className}`}
       >
         <ThemeProvider
           attribute="class"

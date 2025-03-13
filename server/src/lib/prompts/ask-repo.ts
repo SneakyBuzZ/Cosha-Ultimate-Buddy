@@ -25,10 +25,10 @@ export const getAskRepoPrompt = (
         - **DO NOT guess or make assumptions**—if the answer is not found, say so.
         - **DO NOT start your answer with a greeating and Based on the provided files, ...**.
         - **Include code snippets explaining the purpose if necessary**.
+        - **Answer should have relevant file names if referring to some**.
     
         ### **Your Response Format**
         \`\`\`
-        Files Related: [file1.ts, file2.ts]
-        Answer: <Your well-explained answer here>
+        <Your well-explained answer here>
         \`\`\`
         `;

@@ -6,7 +6,7 @@ import { splineSans } from "@/lib/fonts";
 
 const HeroSection = () => {
   return (
-    <main className="container main flex flex-col items-center justify-center text-center gap-2 px-5 mx-auto py-24">
+    <main className="container flex flex-col items-center justify-center text-center gap-2 px-5 mx-auto py-24">
       <AnimatedPill label="Welcome to Cosha!" className="h-8" />
       <div
         className={cn(

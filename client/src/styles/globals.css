@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply bg-[#fafafa] dark:bg-neutral-950 dark:text-neutral-700 text-neutral-700;
+        @apply bg-[#fafafa] dark:bg-[#0f0f0f] dark:text-neutral-700 text-neutral-700;
     }
 
     :root {
@@ -83,58 +83,6 @@
     .text-balance {
         text-wrap: balance;
     }
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    z-index: 1;
-}
-
-.main:before {
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.096) 0, #00000096 100%);
-    position: absolute;
-    content: "";
-    z-index: -10;
-    height: 100svh;
-    width: 100%;
-    top: 0;
-}
-
-.main:after {
-    content: "";
-    background-image: url("/assets/images/grid.svg");
-    z-index: -2;
-    position: absolute;
-    width: 100%;
-    height: 60rem;
-    top: 0;
-    opacity: 0.3;
-    filter: invert(0);
-}
-
-.gradient {
-    height: max-content;
-    z-index: 1;
-    width: 100%;
-    max-width: 840px;
-    background-image: radial-gradient(at 27% 37%,
-            hsla(215, 98%, 61%, 1) 0px,
-            transparent 0%),
-        radial-gradient(at 97% 21%, rgb(25, 247, 255) 0px, transparent 50%),
-        radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
-        radial-gradient(at 10% 29%, rgb(111, 59, 255) 0px, transparent 50%),
-        radial-gradient(at 97% 96%, rgb(255, 185, 64) 0px, transparent 50%),
-        radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
-        radial-gradient(at 79% 53%, rgb(255, 93, 139) 0px, transparent 50%);
-    position: absolute;
-    content: "";
-    height: 20rem;
-    filter: blur(100px) saturate(150%);
-    top: 80px;
-    opacity: 0.3;
 }
 
 @layer components {

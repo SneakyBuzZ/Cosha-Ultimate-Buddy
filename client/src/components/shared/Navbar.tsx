@@ -4,12 +4,13 @@ import { NavbarPropsType } from "@/lib/types";
 import Link from "next/link";
 import AuthModal from "@/components/shared/AuthModal";
 import { Button } from "@/components/ui/button";
-import { FaGithub } from "react-icons/fa";
 
 const Navbar = ({ session }: NavbarPropsType) => {
   return (
-    <nav className="z-50 w-full h-[20%] flex justify-between items-center px-3 md:px-8 py-3 border-b border-b-neutral-200 dark:border-b-neutral-700 bg-neutral-100 dark:bg-neutral-950">
-      <Logo className="w-[105px]" withText />
+    <nav className="w-full flex justify-between items-center px-3 md:px-8 py-3 border-b border-b-neutral-200 dark:border-b-neutral-800 bg-neutral-100 dark:bg-neutral-950/10 glassmorphic">
+      <Link href={"/"} passHref>
+        <Logo className="w-[105px] cursor-pointer" withText />
+      </Link>
       {session ? (
         <>
           <div className="flex items-center justify-center gap-4">
@@ -22,9 +23,6 @@ const Navbar = ({ session }: NavbarPropsType) => {
       ) : (
         <>
           <div className="flex justify-center items-center gap-1">
-            <Link href="" className="text-xs md:text-sm mr-3">
-              <FaGithub className="h-5 w-5" />
-            </Link>
             <Button variant={"ghost"}>Login</Button>
             <AuthModal
               title="Join the Conversation"

@@ -128,6 +128,8 @@ export const getById = async (req: Request, res: Response) => {
 export const getAnswerToQuestion = async (req: Request, res: Response) => {
   const { success, data } = getAnswerToQuestionSchema.safeParse(req.body);
 
+  console.log("YES IT HIT ME");
+
   if (!success) {
     return res
       .status(400)
