@@ -1,5 +1,8 @@
 # Cosha: Your AI Ultimate Buddy⚡
 
+![Screenshot 2025-04-12 144444](https://github.com/user-attachments/assets/1df98711-7651-4c25-a73a-f2581dee71ca)
+
+
 #### Cosha is an _AI-powered GitHub_ companion designed to simplify and enhance your development experience, especially in the open-source space. Whether you are a seasoned developer or a beginner, Cosha helps you save time, boost productivity, and collaborate seamlessly with _intelligent AI tools_ and real-time insights.
 
 ## Key Features✨
